@@ -21,25 +21,48 @@ M.on_attach = function(client, bufnr)
   end
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-
-M.capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
-  snippetSupport = true,
-  preselectSupport = true,
-  insertReplaceSupport = true,
-  labelDetailsSupport = true,
-  deprecatedSupport = true,
-  commitCharactersSupport = true,
-  tagSupport = { valueSet = { 1 } },
-  resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
+M.cmp_lsp_capabilities = {
+  textDocument = {
+    completion = {
+      dynamicRegistration = false,
+      completionItem = {
+        snippetSupport = true,
+        commitCharactersSupport = true,
+        deprecatedSupport = true,
+        preselectSupport = true,
+        tagSupport = { valueSet = { 1 } },
+        insertReplaceSupport = true,
+        resolveSupport = {
+          properties = {
+            "documentation",
+            "detail",
+            "additionalTextEdits",
+          },
+        },
+        insertTextModeSupport = {
+          valueSet = {
+            1, -- asIs
+            2, -- adjustIndentation
+          },
+        },
+        labelDetailsSupport = true,
+      },
+      contextSupport = true,
+      insertTextMode = 1,
+      completionList = {
+        itemDefaults = {
+          "commitCharacters",
+          "editRange",
+          "insertTextFormat",
+          "insertTextMode",
+          "data",
+        },
+      },
     },
   },
 }
+
+M.capabilities = vim.tbl_deep_extend("force", vim.lsp.protocol.make_client_capabilities(), M.cmp_lsp_capabilities)
 
 require("lspconfig").lua_ls.setup {
   on_attach = M.on_attach,
