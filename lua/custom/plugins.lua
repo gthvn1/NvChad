@@ -20,7 +20,7 @@ local plugins = {
     opts = {
       ensure_installed = {
         "rust-analyzer",
-        "ocamllsp",
+        "ocaml-lsp",
         "clangd",
       }
     }
