@@ -7,6 +7,13 @@ lspconfig.rust_analyzer.setup({
   capabilities = capabilities,
   filetypes = {"rust"},
   root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+  settings = {
+    ['rust_analyzer'] = {
+      cargo = {
+        allFeatues = true,
+      },
+    },
+  },
 })
 
 lspconfig.clangd.setup {}
