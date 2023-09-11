@@ -19,9 +19,10 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "rust-analyzer",
-        "ocaml-lsp",
         "clangd",
+        "ocaml-lsp",
+        "python-lsp-server",
+        "rust-analyzer",
       }
     }
   },
