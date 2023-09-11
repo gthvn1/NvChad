@@ -1,5 +1,8 @@
-local on_attach = require('plugins.configs.lspconfig').on_attach
-local capabilities = require('plugins.configs.lspconfig').capabilities
+local config = require("plugins.configs.lspconfig")
+
+local on_attach = config.on_attach
+local capabilities = config.capabilities
+
 local lspconfig = require('lspconfig')
 
 lspconfig.rust_analyzer.setup({
@@ -19,14 +22,17 @@ lspconfig.rust_analyzer.setup({
 lspconfig.clangd.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = {"c", "cpp"},
 })
 
-lspconfig.pyright.setup({
+lspconfig.pylsp.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = {"python"},
 })
 
 lspconfig.ocamllsp.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = {"ocaml"},
 })
