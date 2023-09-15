@@ -27,7 +27,6 @@ local plugins = {
     opts = {
       ensure_installed = {
         "clangd",
-        "ocaml-lsp",
         "python-lsp-server",
         "rust-analyzer",
       }
