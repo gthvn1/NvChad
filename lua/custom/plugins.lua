@@ -1,6 +1,7 @@
 local plugins = {
   {
     "github/copilot.vim",
+    enabled = false,
     lazy = false,
     config = function ()
       vim.g.copilot_no_tab_map = true;
