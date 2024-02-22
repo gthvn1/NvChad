@@ -1,5 +1,12 @@
 local plugins = {
   {
+    "ollykel/v-vim",
+    lazy = false,
+    config = function ()
+      vim.g.v_autofmt_bufwritepre = 1
+    end
+  },
+  {
     "github/copilot.vim",
     enabled = false,
     lazy = false,
